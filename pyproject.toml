@@ -12,8 +12,6 @@ dependencies = [
  "jupyterlab>=3.0",
  "notebook",
  "pyreadr>=0.5.3",
- "requests>=2.32.5",
- "rpy2>=3.6.4",
 ]
 
 [project.scripts]
