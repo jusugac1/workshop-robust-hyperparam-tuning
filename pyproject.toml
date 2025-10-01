@@ -9,8 +9,10 @@ readme = "README.md"
 dynamic = [ "version",]
 dependencies = [
  "ipython>=8.10",
+ "jupyter-summarytools>=0.2.3",
  "jupyterlab>=3.0",
  "notebook",
+ "pyarrow>=21.0.0",
 ]
 
 [project.scripts]
