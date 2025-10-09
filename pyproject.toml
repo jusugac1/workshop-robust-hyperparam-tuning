@@ -12,6 +12,7 @@ dependencies = [
  "jupyter-summarytools>=0.2.3",
  "jupyterlab>=3.0",
  "notebook",
+ "pandera>=0.26.1",
  "pyarrow>=21.0.0",
  "pydantic>=2.11.9",
 ]
