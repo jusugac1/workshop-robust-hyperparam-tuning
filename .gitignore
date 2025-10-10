@@ -163,3 +163,6 @@ uv.lock
 
 # MLflow
 mlflow_experiments/
+
+# Notebook images temporarily saved
+notebooks/tmp/
