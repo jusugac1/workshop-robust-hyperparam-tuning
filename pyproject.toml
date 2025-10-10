@@ -42,10 +42,8 @@ fail_under = 0
 show_missing = true
 exclude_lines = [ "pragma: no cover", "raise NotImplementedError",]
 
-[tool.ruff.format]
+[lint]
 docstring-code-format = true
-
-[tool.ruff.lint]
 lint.select = [
     "B",    # Bugbear
     "C4",   # Comprehensions
