@@ -77,6 +77,11 @@ lint.ignore = [
     "PD901",# Avoid using "df" as a variable name
 ]
 
+[dependency-groups]
+dev = [
+    "ruff>=0.12.12",
+]
+
 
 [tool.setuptools.packages.find]
 where = [ "src",]
