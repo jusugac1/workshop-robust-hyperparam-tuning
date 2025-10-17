@@ -16,6 +16,7 @@ dependencies = [
  "numpy>=1.20.0",
  "optuna>=4.5.0",
  "optunahub>=0.3.1",
+ "plotly>=6.3.1",
  "pyarrow>=21.0.0",
  "pydantic>=2.11.9",
  "skrub>=0.6.2",
