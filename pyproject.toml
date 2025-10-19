@@ -13,6 +13,7 @@ dependencies = [
  "jupyter-summarytools>=0.2.3",
  "jupyterlab>=3.0",
  "notebook",
+ "pandera>=0.26.1",
  "numpy>=1.20.0",
  "optuna>=4.5.0",
  "optunahub>=0.3.1",
