@@ -8,13 +8,18 @@ name = "workshop-robust-hyperparam-tuning"
 readme = "README.md"
 dynamic = [ "version",]
 dependencies = [
+ "confopt>=2.0.1",
  "ipython>=8.10",
  "jupyter-summarytools>=0.2.3",
  "jupyterlab>=3.0",
  "notebook",
  "pandera>=0.26.1",
+ "numpy>=1.20.0",
+ "optuna>=4.5.0",
+ "optunahub>=0.3.1",
  "pyarrow>=21.0.0",
  "pydantic>=2.11.9",
+ "skrub>=0.6.2",
 ]
 
 [project.scripts]
@@ -38,10 +43,8 @@ fail_under = 0
 show_missing = true
 exclude_lines = [ "pragma: no cover", "raise NotImplementedError",]
 
-[tool.ruff.format]
+[lint]
 docstring-code-format = true
-
-[tool.ruff.lint]
 lint.select = [
     "B",    # Bugbear
     "C4",   # Comprehensions
