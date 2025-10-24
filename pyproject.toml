@@ -17,6 +17,7 @@ dependencies = [
  "numpy>=1.20.0",
  "optuna>=4.5.0",
  "optunahub>=0.3.1",
+ "plotly>=6.3.1",
  "pyarrow>=21.0.0",
  "pydantic>=2.11.9",
  "skrub>=0.6.2",
@@ -76,6 +77,11 @@ lint.ignore = [
     "D415", # first line should end with a period, question mark or exclamation point
     "N806", # Variable should be lowercase
     "PD901",# Avoid using "df" as a variable name
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.12.12",
 ]
 
 
