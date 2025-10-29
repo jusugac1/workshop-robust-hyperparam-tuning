@@ -4,6 +4,7 @@
 
 import pandas as pd
 import optuna
+import yaml
 from typing import Any, Literal
 
 
@@ -58,3 +59,17 @@ def build_search_space(
                 f"trial.suggest_{sampling_params['sampling_type']}('{hyparam_name}', {sampling_params['min']}, {sampling_params['max']})"
             )
     return hyperparams
+
+
+def load_conf_parameters(conf_file: str) -> dict[str, Any]:
+    """Load configuration parameters from a YAML file.
+
+    Args:
+        conf_file (str): Path to the YAML configuration file.
+
+    Returns:
+        dict[str, Any]: A dictionary containing the configuration parameters.
+    """
+    with open(conf_file, "r") as file:
+        params = yaml.safe_load(file)
+    return params
