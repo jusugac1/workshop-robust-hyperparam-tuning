@@ -1,6 +1,15 @@
-import pandas as pd
-from typing import Literal
+# =================
+# ==== IMPORTS ====
+# =================
 
+import pandas as pd
+import optuna
+from typing import Any, Literal
+
+
+# ===================
+# ==== FUNCTIONS ====
+# ===================
 
 def retrieve_data_w_features(
     df: pd.DataFrame,
@@ -22,3 +31,30 @@ def retrieve_data_w_features(
     X = df_filtered.drop(columns=features_to_drop + ["PremTot"], errors="raise")
     y = df_filtered["PremTot"]
     return X, y
+
+
+def build_search_space(
+    trial: optuna.trial.Trial,
+    hyperparams_search_space: dict[str, Any],
+) -> dict[str, Any]:
+    """Build the search space for hyperparameter optimization based on the provided sampling parameters.
+
+    Args:
+        trial (Trial): The Optuna trial object used for sampling hyperparameters.
+        hyperparams_search_space (dict[str, Any]): The search space for hyperparameter tuning.
+
+    Returns:
+        dict[str, Any]: A dictionary containing the sampled hyperparameters for the current trial.
+    """
+    hyperparams = {}
+
+    for hyparam_name, sampling_params in hyperparams_search_space.items():
+        if sampling_params["sampling_type"] == "categorical":
+            hyperparams[hyparam_name] = eval(  # noqa: S307
+                f"trial.suggest_{sampling_params['sampling_type']}('{hyparam_name}', {sampling_params['choices']})"
+            )
+        else:
+            hyperparams[hyparam_name] = eval(  # noqa: S307
+                f"trial.suggest_{sampling_params['sampling_type']}('{hyparam_name}', {sampling_params['min']}, {sampling_params['max']})"
+            )
+    return hyperparams
