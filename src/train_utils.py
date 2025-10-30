@@ -6,6 +6,10 @@ import pandas as pd
 import optuna
 import yaml
 from typing import Any, Literal
+from sklearn.ensemble import HistGradientBoostingRegressor
+from sklearn.metrics import root_mean_squared_error
+from optuna.samplers import TPESampler
+from functools import partial
 
 
 # ===================
@@ -73,3 +77,85 @@ def load_conf_parameters(conf_file: str) -> dict[str, Any]:
     with open(conf_file, "r") as file:
         params = yaml.safe_load(file)
     return params
+
+
+def optimize_hyperparams_hgb(
+    trial: optuna.trial.Trial,
+    search_params: dict[str, Any],
+    df_train: pd.DataFrame,
+    y_train: pd.Series,
+    df_val: pd.DataFrame,
+    y_val: pd.Series,
+    categorical_features: list[str],
+) -> float:
+    """Optimize the hyperparameters of the HistGradientBoosting model.
+    
+    Args:
+        trial (optuna.trial.Trial): The Optuna trial object.
+        search_params (dict[str, Any]): The search space parameters.
+        df_train (pd.DataFrame): The training features.
+        y_train (pd.Series): The training target.
+        df_val (pd.DataFrame): The validation features.
+        y_val (pd.Series): The validation target.
+        categorical_features (list[str]): List of categorical feature names.
+
+    Returns:
+        (float): The validation loss.
+    """
+    # Build search space
+    hyperparams = build_search_space(trial, search_params)
+
+    # Define the model
+    model = HistGradientBoostingRegressor(
+        categorical_features=categorical_features,
+        early_stopping=True,
+        random_state=42,
+        **hyperparams,
+    )
+    model.fit(X=df_train, y=y_train, X_val=df_val, y_val=y_val)
+    val_predictions = model.predict(df_val)
+    return root_mean_squared_error(y_true=y_val, y_pred=val_predictions)
+
+
+def run_bayesian_optimization(
+    df_train: pd.DataFrame,
+    y_train: pd.Series,
+    df_val: pd.DataFrame,
+    y_val: pd.Series,
+    categorical_features: list[str],
+    search_params: dict[str, dict[str, Any]],
+    default_params_list: list[dict[str, Any]] = None,
+) -> dict[str, Any]:
+    """Run the Bayesian optimization process using Optuna."""
+    # Create the Optuna study with TPE sampler
+    study = optuna.create_study(
+        study_name="basic_hgb_opt",
+        direction="minimize",
+        sampler=TPESampler(
+            seed=42,
+            n_startup_trials=10,
+            multivariate=True
+        )
+    )
+
+    # Create the objective
+    objective = partial(
+        optimize_hyperparams_hgb,
+        search_params=search_params,
+        df_train=df_train,
+        y_train=y_train,
+        df_val=df_val,
+        y_val=y_val,
+        categorical_features=categorical_features,
+    )
+
+    # Start the Bayesian Optimization with combination of default parameters if given
+    if default_params_list is not None:
+        for default_params in default_params_list:
+            study.enqueue_trial(default_params)
+    
+    # Run Bayesian optimization
+    study.optimize(objective, n_trials=50, show_progress_bar=True, n_jobs=1)
+
+    # Get best hyperparams
+    return study.best_params
