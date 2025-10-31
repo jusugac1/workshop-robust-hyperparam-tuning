@@ -84,30 +84,34 @@ The workshop will be done through notebooks. The notebooks folder contains the f
 We recommend following this learning path (click on the nodes to navigate to the corresponding notebook):
 
 ```mermaid
-stateDiagram
-    [*] --> AnalyzeData
-    AnalyzeData --> Pydantic
-    AnalyzeData --> Pandera
-    Pydantic --> BayesianOptConcepts
-    Pandera --> BayesianOptConcepts
-    BayesianOptConcepts --> BayesianOptStarter
-    BayesianOptStarter --> Assignment
-    Assignment --> BonusAssignment
-    BonusAssignment --> [*]
+    stateDiagram
+        [*] --> AnalyzeData
+        AnalyzeData --> Pydantic
+        AnalyzeData --> Pandera
+        Pydantic --> BayesianOptConcepts
+        Pandera --> BayesianOptConcepts
+        BayesianOptConcepts --> BayesianOptStarter
+        note left of BayesianOptConcepts
+            Optional: you can skip this
+            intro and jump to BayesianOptStarter
+        end note
+        BayesianOptStarter --> Assignment
+        Assignment --> BonusAssignment
+        BonusAssignment --> [*]
 
-    click AnalyzeData "https://github.com/jusugac1/workshop-robust-hyperparam-tuning/blob/dev/notebooks/1.0-analyze-data.ipynb" "Go to EDA notebook"
+        click AnalyzeData "https://github.com/jusugac1/workshop-robust-hyperparam-tuning/blob/dev/notebooks/1.0-analyze-data.ipynb" "Go to EDA notebook"
 
-    click Pydantic "https://github.com/jusugac1/workshop-robust-hyperparam-tuning/blob/dev/notebooks/2.1-pydantic-explain.ipynb" "Go to Pydantic notebook"
+        click Pydantic "https://github.com/jusugac1/workshop-robust-hyperparam-tuning/blob/dev/notebooks/2.1-pydantic-explain.ipynb" "Go to Pydantic notebook"
 
-    click Pandera "https://github.com/jusugac1/workshop-robust-hyperparam-tuning/blob/dev/notebooks/2.2-pandera-explain.ipynb" "Go to Pandera notebook"
+        click Pandera "https://github.com/jusugac1/workshop-robust-hyperparam-tuning/blob/dev/notebooks/2.2-pandera-explain.ipynb" "Go to Pandera notebook"
 
-    click BayesianOptConcepts "https://github.com/jusugac1/workshop-robust-hyperparam-tuning/blob/dev/notebooks/3.1-bayesian-opt-explain.md" "Go to Bayesian Optimization Concepts explanation"
+        click BayesianOptConcepts "https://github.com/jusugac1/workshop-robust-hyperparam-tuning/blob/dev/notebooks/3.1-bayesian-opt-explain.md" "Go to Bayesian Optimization Concepts explanation"
 
-    click BayesianOptStarter "https://github.com/jusugac1/workshop-robust-hyperparam-tuning/blob/dev/notebooks/3.2-bayesian-opt-starter.ipynb" "Go to Bayesian Optimization tutorial"
+        click BayesianOptStarter "https://github.com/jusugac1/workshop-robust-hyperparam-tuning/blob/dev/notebooks/3.2-bayesian-opt-starter.ipynb" "Go to Bayesian Optimization tutorial"
 
-    click Assignment "https://github.com/jusugac1/workshop-robust-hyperparam-tuning/blob/dev/notebooks/assignment.ipynb" "Go to assignment"
+        click Assignment "https://github.com/jusugac1/workshop-robust-hyperparam-tuning/blob/dev/notebooks/assignment.ipynb" "Go to assignment"
 
-    click BonusAssignment "https://github.com/jusugac1/workshop-robust-hyperparam-tuning/blob/dev/notebooks/bonus-assignment.ipynb" "Go to bonus assignment"
+        click BonusAssignment "https://github.com/jusugac1/workshop-robust-hyperparam-tuning/blob/dev/notebooks/bonus-assignment.ipynb" "Go to bonus assignment"
 ```
 
 ---
