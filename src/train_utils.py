@@ -72,7 +72,7 @@ def load_conf_parameters(conf_file: str) -> dict[str, Any]:
         conf_file (str): Path to the YAML configuration file.
 
     Returns:
-        dict[str, Any]: A dictionary containing the configuration parameters.
+        (dict[str, Any]): A dictionary containing the configuration parameters.
     """
     with open(conf_file, "r") as file:
         params = yaml.safe_load(file)
