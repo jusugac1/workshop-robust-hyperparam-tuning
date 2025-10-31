@@ -49,6 +49,8 @@ gitGraph
 We use **[`uv`](https://github.com/astral-sh/uv)** for the Python environment creation.
 
 ```bash
+# Create environment
+uv venv
 # Install dependencies
 uv sync
 ```
