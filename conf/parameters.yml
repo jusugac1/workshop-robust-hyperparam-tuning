@@ -1,0 +1,50 @@
+# =======================================
+# ==== Parameters to train the model ====
+# =======================================
+
+# Name of the target variable
+target_name: "PremTot"
+
+# Search space for the Bayesian optimization
+search_space: {
+  "max_iter": {
+    "sampling_type": "int",
+    "min": 10,
+    "max": 100,
+  },
+  "learning_rate": {
+    "sampling_type": "float",
+    "minimum": 0.01,
+    "maximum": 0.5,
+  },
+  "l2_regularization": {
+    "sampling_type": "log_float",
+    "min": 0.0,
+    "max": 10.0
+  },
+}
+
+# Combination of hyperparameters to test at the beginning of the Bayesian optimization process
+default_params: {
+  "max_iter": 50,
+  "learning_rate": 0.1,
+  "l2_regularization": 1.0,
+}
+
+# List of the categorical features
+categorical_features: [
+  "DrivAge",
+  "DrivGender",
+  "MaritalStatus",
+  "PayFreq",
+  "JobCode",
+  "VehClass",
+  "VehPower",
+  "VehGas",
+  "VehUsage",
+  "Garage",
+  "Area",
+  "Region",
+  "Channel",
+  "Marketing"
+]
