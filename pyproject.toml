@@ -21,6 +21,7 @@ dependencies = [
  "pyarrow>=21.0.0",
  "pydantic>=2.11.9",
  "skrub>=0.6.2",
+ "hypothesis>=6.141.1",
 ]
 
 [project.scripts]
