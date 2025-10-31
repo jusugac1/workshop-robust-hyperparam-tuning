@@ -21,13 +21,14 @@ dependencies = [
  "pyarrow>=21.0.0",
  "pydantic>=2.11.9",
  "skrub>=0.6.2",
+ "hypothesis>=6.141.1",
 ]
 
 [project.scripts]
 workshop-robust-hyperparam-tuning = "src.__main__:main"
 
 [project.optional-dependencies]
-dev = [ "pytest-cov~=3.0", "pytest-mock>=1.7.1, <2.0", "pytest~=7.2", "ruff~=0.12.0",]
+dev = [ "pytest-cov~=3.0", "pytest-mock>=1.7.1, <2.0", "pytest~=7.2", "ruff>=0.12.0",]
 
 
 [tool.ruff]
@@ -77,11 +78,6 @@ lint.ignore = [
     "D415", # first line should end with a period, question mark or exclamation point
     "N806", # Variable should be lowercase
     "PD901",# Avoid using "df" as a variable name
-]
-
-[dependency-groups]
-dev = [
-    "ruff>=0.12.12",
 ]
 
 
