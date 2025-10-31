@@ -21,16 +21,16 @@ What you will progressively learn:
 
 ```bash
 # Clone the repository
-git https://github.com/<your-username>/workshop-robust-hyperparam-tuning.git
+git https://github.com/YOUR_USERNAME/workshop-robust-hyperparam-tuning.git
 
 cd workshop-robust-hyperparam-tuning
 ```
 
-After that, fork the `main` branch to code your solutions.
+After forking the repository, create a new branch to work on your solutions:
 
 ```bash
 # Create your branch
-git checkout -b YourBranch
+git checkout -b your-branch-name main
 ```
 
 ```mermaid
@@ -38,8 +38,8 @@ gitGraph
     commit
     commit
     commit
-    branch YourBranch
-    commit id: "Your first commit"
+    branch your-branch-name
+    commit id: "your first commit"
 ```
 
 ---
