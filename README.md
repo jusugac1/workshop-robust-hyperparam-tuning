@@ -2,13 +2,13 @@
 
 **A hands-on guide to building reliable and validated ML optimization workflows.**
 
-This workshop walks you through **data validation with `Pandera` and `Pydantic`**, and **hyperparameter optimization with `Optuna`**, combining the best practices for **trustworthy Machine Learning**.
+This workshop introduces participants to essential MLOps practices, focusing on **automating data quality validation and hyperparameter tuning**. They will learn to use `Pydantic` and `Pandera` to build automated data validation pipelines. The session also covers hyperparameter tuning with Bayesian optimization using the `Optuna` framework, including how to interpret and analyze the results.
 
 ---
 
 ## 🧩 Overview
 
-What you will progressively do:
+What you will progressively learn:
 
 1. **Enforce configuration integrity and validation** with `Pydantic`.  
 2. **Validate your dataframe** using `Pandera` (schema-based data validation).  
@@ -17,91 +17,109 @@ What you will progressively do:
 
 ---
 
-## 📙 Notebooks
+## 🚀 Quick setup
 
-The notebooks folder contains the following
+```bash
+# Clone the repository
+git https://github.com/<your-username>/workshop-robust-hyperparam-tuning.git
 
-| Notebook | Description |
-|:--|:--|
-| `1.0-analyze-data.ipynb` | Quick EDA |
-| `2.2-pydantic-explain.ipynb` | Introduction to `Pydantic` and its validation features |
-| `2.2-pandera-explain.ipynb` | Introduction to `Pandera` for tabular data validation |
-| `3.1-bayesian-opt-explain.md` | Core principles behind Bayesian optimization |
-| `3.2-bayesian-opt-starter.ipynb` | Practical tutorial to get started with `Optuna` |
-| `assignment.ipynb` | Final assignment: combine `Pandera`, `Pydantic`, and `Optuna` |
-| `1.0-analyze-data.ipynb` | Quick EDA and data exploration |
+cd workshop-robust-hyperparam-tuning
+```
+
+After that, fork the `main` branch to code your solutions.
+
+```bash
+# Create your branch
+git checkout -b YourBranch
+```
 
 ```mermaid
-stateDiagram
-    [*] --> Still
-    Still --> [*]
-    Still --> Moving
-    Moving --> Still
-    Moving --> Crash
-    Crash --> [*]
-
-    click Still "https://example.com/still" "Go to Still state"
-    click Moving "https://example.com/moving" "Go to Moving state"
-    click Crash "https://example.com/crash" "Go to Crash state"
-
+gitGraph
+    commit
+    commit
+    commit
+    branch YourBranch
+    commit id: "Your first commit"
 ```
 
 ---
 
 ## 🛠️ Installation
 
-We use **[`uv`](https://github.com/astral-sh/uv)** for fast Python environment creation.
+We use **[`uv`](https://github.com/astral-sh/uv)** for the Python environment creation.
 
 ```bash
-# Clone the repository
-git https://github.com/<your-username>/workshop-robust-hyperparam-tuning.git
-
-cd robust-hyperparameter-optimization
-
 # Install dependencies
 uv sync
 ```
 
 > 📦 All dependencies are defined in the `pyproject.toml` file.
-
 ---
-
-## 🚀 Quick Start
 
 ```bash
 # Activate the environment
 source .venv/bin/activate  # (on Windows: .venv\Scripts\activate)
-
-# Run an example
-python 05_bayesian_optimization_starter/main.py
-
 ```
 
-## 🧠 What You’ll Learn
+---
 
-- ✅ How to define and validate ML inputs and configurations  
-- 🧪 How to ensure clean data pipelines with schema checks  
-- 🔍 How to optimize and visualize hyperparameter tuning results  
-- ⚡ How to combine validation and optimization into one robust workflow
+## 📙 Notebooks
+
+The workshop will be done through notebooks. The notebooks folder contains the following elements:
+
+| Notebook | Description |
+|:--|:--|
+| `1.0-analyze-data.ipynb` | Quick EDA to familiarize with the data|
+| `2.1-pydantic-explain.ipynb` | Introduction to `Pydantic` and its validation features |
+| `2.2-pandera-explain.ipynb` | Introduction to `Pandera` for tabular data validation |
+| `3.1-bayesian-opt-explain.md` | Core principles behind Bayesian optimization |
+| `3.2-bayesian-opt-starter.ipynb` | Practical tutorial to get started with `Optuna` |
+| `assignment.ipynb` | Final assignment: combine `Pandera`, `Pydantic`, and `Optuna` |
+| `bonus-assignment.ipynb` | Bonus exercise if you finish early 😶 |
+
+## ❓ Where to start?
+
+We recommend following this learning path (click on the nodes to navigate to the corresponding notebook):
+
+```mermaid
+stateDiagram
+    [*] --> AnalyzeData
+    AnalyzeData --> Pydantic
+    AnalyzeData --> Pandera
+    Pydantic --> BayesianOptConcepts
+    Pandera --> BayesianOptConcepts
+    BayesianOptConcepts --> BayesianOptStarter
+    BayesianOptStarter --> Assignment
+    Assignment --> BonusAssignment
+    BonusAssignment --> [*]
+
+    click AnalyzeData "https://github.com/jusugac1/workshop-robust-hyperparam-tuning/blob/dev/notebooks/1.0-analyze-data.ipynb" "Go to EDA notebook"
+
+    click Pydantic "https://github.com/jusugac1/workshop-robust-hyperparam-tuning/blob/dev/notebooks/2.1-pydantic-explain.ipynb" "Go to Pydantic notebook"
+
+    click Pandera "https://github.com/jusugac1/workshop-robust-hyperparam-tuning/blob/dev/notebooks/2.2-pandera-explain.ipynb" "Go to Pandera notebook"
+
+    click BayesianOptConcepts "https://github.com/jusugac1/workshop-robust-hyperparam-tuning/blob/dev/notebooks/3.1-bayesian-opt-explain.md" "Go to Bayesian Optimization Concepts explanation"
+
+    click BayesianOptStarter "https://github.com/jusugac1/workshop-robust-hyperparam-tuning/blob/dev/notebooks/3.2-bayesian-opt-starter.ipynb" "Go to Bayesian Optimization tutorial"
+
+    click Assignment "https://github.com/jusugac1/workshop-robust-hyperparam-tuning/blob/dev/notebooks/assignment.ipynb" "Go to assignment"
+
+    click BonusAssignment "https://github.com/jusugac1/workshop-robust-hyperparam-tuning/blob/dev/notebooks/bonus-assignment.ipynb" "Go to bonus assignment"
+```
 
 ---
 
 ## 📊 Tech Stack
 
-| Component | Library |
-|------------|----------|
-| EDA | `summarytools`, `skrub` |
-| Data validation | `pandera`, `pydantic` |
-| Optimization | `optuna` |
-| Modeling | `scikit-learn` |
+The table below summarizes the main tools used in this workshop:
 
----
-
-## 🧩 Next Steps
-
-- Extend the search space to new ML models  
-- Add advanced `Optuna` samplers or pruners  
-- Integrate with MLflow or Weights & Biases for experiment tracking
+| Component        | Library                  |
+|-----------------|--------------------------|
+| EDA              | `summarytools`, `skrub` |
+| Data Validation  | `pandera`, `pydantic`   |
+| Hyperparameter Optimization | `optuna`      |
+| Modeling         | `scikit-learn`           |
 
 ---
 
