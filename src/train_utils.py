@@ -5,7 +5,7 @@
 import pandas as pd
 import optuna
 import yaml
-from typing import Any, Literal
+from typing import Any, Literal, Optional
 from sklearn.ensemble import HistGradientBoostingRegressor
 from sklearn.metrics import root_mean_squared_error
 from optuna.samplers import TPESampler
@@ -124,9 +124,23 @@ def run_bayesian_optimization(
     y_val: pd.Series,
     categorical_features: list[str],
     search_params: dict[str, dict[str, Any]],
-    default_params_list: list[dict[str, Any]] = None,
+    default_params_list: Optional[list[dict[str, Any]]] = None,
 ) -> dict[str, Any]:
-    """Run the Bayesian optimization process using Optuna."""
+    """Run the Bayesian optimization process using Optuna.
+
+    Args:
+        df_train (pd.DataFrame): The training features.
+        y_train (pd.Series): The training target.
+        df_val (pd.DataFrame): The validation features.
+        y_val (pd.Series): The validation target.
+        categorical_features (list[str]): List of categorical feature names.
+        search_params (dict[str, dict[str, Any]]): The search space parameters.
+        default_params_list (Optional[list[dict[str, Any]]]): List of default hyperparameters
+            set to enqueue before bayesian optimization.
+    
+    Returns:
+        (dict[str, Any]): The best hyperparameters found during optimization.
+    """
     # Create the Optuna study with TPE sampler
     study = optuna.create_study(
         study_name="basic_hgb_opt",
