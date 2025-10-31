@@ -30,7 +30,7 @@ After forking the repository, create a new branch to work on your solutions:
 
 ```bash
 # Create your branch
-git checkout -b your-branch-name main
+git checkout -b your-branch-name
 ```
 
 ```mermaid
