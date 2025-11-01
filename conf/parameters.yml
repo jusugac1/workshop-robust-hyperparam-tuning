@@ -14,25 +14,27 @@ search_space: {
   },
   "learning_rate": {
     "sampling_type": "float",
-    "minimum": 0.01,
-    "maximum": 0.5,
+    "min": 0.01,
+    "max": 0.5,
   },
   "l2_regularization": {
-    "sampling_type": "log_float",
+    "sampling_type": "float",
     "min": 0.0,
     "max": 10.0
   },
 }
 
 # Combination of hyperparameters to test at the beginning of the Bayesian optimization process
-default_params: {
-  "max_iter": 50,
-  "learning_rate": 0.1,
-  "l2_regularization": 1.0,
-}
+default_params: [
+  {
+    "max_iter": 50,
+    "learning_rate": 0.1,
+    "l2_regularization": 1.0,
+  },
+]
 
 # List of the categorical features
-categorical_features: [
+categorical_feat: [
   "DrivAge",
   "DrivGender",
   "MaritalStatus",
