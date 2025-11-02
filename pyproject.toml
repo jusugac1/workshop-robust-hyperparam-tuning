@@ -1,0 +1,86 @@
+[build-system]
+requires = [ "setuptools",]
+build-backend = "setuptools.build_meta"
+
+[project]
+requires-python = ">=3.9"
+name = "workshop-robust-hyperparam-tuning"
+readme = "README.md"
+dynamic = [ "version",]
+dependencies = [
+ "confopt>=2.0.1",
+ "ipython>=8.10",
+ "jupyter-summarytools>=0.2.3",
+ "jupyterlab>=3.0",
+ "notebook",
+ "pandera>=0.26.1",
+ "numpy>=1.20.0",
+ "optuna>=4.5.0",
+ "optunahub>=0.3.1",
+ "plotly>=6.3.1",
+ "pyarrow>=21.0.0",
+ "pydantic>=2.11.9",
+ "skrub>=0.6.2",
+ "hypothesis>=6.141.1",
+]
+
+[project.scripts]
+workshop-robust-hyperparam-tuning = "src.__main__:main"
+
+[project.optional-dependencies]
+dev = [ "pytest-cov~=3.0", "pytest-mock>=1.7.1, <2.0", "pytest~=7.2", "ruff>=0.12.0",]
+
+
+[tool.ruff]
+line-length = 88
+show-fixes = true
+
+[project.entry-points."kedro.hooks"]
+
+[tool.pytest.ini_options]
+addopts = "--cov-report term-missing --cov src/workshop-robust-hyperparam-tuning -ra"
+
+[tool.coverage.report]
+fail_under = 0
+show_missing = true
+exclude_lines = [ "pragma: no cover", "raise NotImplementedError",]
+
+[lint]
+docstring-code-format = true
+lint.select = [
+    "B",    # Bugbear
+    "C4",   # Comprehensions
+    "C90",  # mccabe
+    "D",    # Docstrings
+    "E",    # pycodestyle error
+    "W",    # pycodestyle warning
+    "F",    # flake8
+    "S",    # bandit
+    "N",    # pep8-naming
+    "RUF",  # ruff
+    "I",    # isort
+    "PD",   # pandas
+    "UP",   # pyupgrade
+    "PL",   # pylint
+    "T201", # print
+]
+lint.ignore = [
+    "E501", # line too long
+    "D100", # missing docstring
+    "D104", # missing docstring in public package
+    "D203", # One blank line before class docstring
+    "D205", # blank line between summary and description
+    "D212", # Multi-line docstring summary should start at the second line
+    "D400", # first line should end with a period, question mark or exclamation point
+    "D404", # first word of the docstring should not be "This"
+    "D407", # Missing dashed underline after section
+    "D413", # Missing blank line after section
+    "D415", # first line should end with a period, question mark or exclamation point
+    "N806", # Variable should be lowercase
+    "PD901",# Avoid using "df" as a variable name
+]
+
+
+[tool.setuptools.packages.find]
+where = [ "src",]
+namespaces = false
