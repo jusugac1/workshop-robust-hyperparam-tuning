@@ -21,7 +21,7 @@ What you will progressively learn:
 
 ```bash
 # Clone the repository
-git https://github.com/YOUR_USERNAME/workshop-robust-hyperparam-tuning.git
+git https://github.com/jusugac1/workshop-robust-hyperparam-tuning.git
 
 cd workshop-robust-hyperparam-tuning
 ```
